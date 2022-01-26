@@ -1,3 +1,5 @@
 import pandas as pd
+import sieveOfEratosthenes as sot
 
-df = pd.read_csv('primes.csv')
+testvar = sot.sieve(100000000)
+print(testvar)
