@@ -1,0 +1,17 @@
+Arithmetic progression of primes
+
+Composite numbers are non-prime
+
+Natural numbers are divided into three categories:
+prime
+composite
+number 1
+
+computation threshold is 1 hr
+
+Task:
+	palindromic primes
+	if the string of digits is a palendrome it can be read both ways
+	find em all fam
+	
+look into primality testing
