@@ -1,6 +1,7 @@
 import pandas as pd
 
 def sieve(n: int) -> list:
+    """Sieve of Eratosthenes function. Give a value, n, and it will return a sorted list containing all primes in range [1, n+1]"""
     
     # set for tracking composite numbers
     composite_set = set()
