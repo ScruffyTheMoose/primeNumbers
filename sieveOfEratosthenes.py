@@ -27,3 +27,12 @@ def sieve(n: int) -> list:
     result = list(prime_set)
     result.sort() # python doesn't like converting a set to a list and sorting on the same line
     return result
+
+def toCSV(prime_list: list, list_name: str, file_name: str, ) -> pd.DataFrame:
+    """Takes list, converts list to DataFrame, saves to .csv file and returns the DataFrame."""
+    
+    # writes list to dataframe with column labeled as list_name and saves to file_name
+    df = pd.DataFrame(prime_list, columns=[list_name]).to_csv(path_or_buf=f'{file_name}.csv')
+    
+    # returns the dataframe
+    return df
