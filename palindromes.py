@@ -1,5 +1,13 @@
-def palindrome(number: int) -> bool:
-    """Checks if the given number is a palindrome arithmetically and returns a boolean."""
+def palindrome(number) -> bool:
+    """
+    Checks if the given number is a palindrome arithmetically.
+    Returns boolean where:
+    1 -> True
+    0 -> False
+    """
+    
+    if number < 10:
+        return 1
 
     # saving number to variable n to check if n == reverse
     n = number
@@ -21,6 +29,6 @@ def palindrome(number: int) -> bool:
 
     # if n, the starting number, is equal to the reverse then it is a palindrome
     if n == rev:
-        return True
+        return 1
     else:
-        return False
+        return 0
