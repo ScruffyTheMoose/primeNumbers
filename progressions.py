@@ -17,8 +17,16 @@ def arithmeticProg(primes: list) -> dict:
 
         # finding next element in arithmetic sequence starting from i with steps of 30 as specified by the prof
         # we only check up to the point that the last element in the sequence will be equal to the greatest prime we know
-        for i in range(1, len(primes) / 30):
+        next_element = -1
+        i = 1
+        
+        while next_element <= primes[-1]:
+            
+            # getting next in sequence
             next_element = prime + (30 * i)
+            
+            # increment i
+            i += 1
 
             # if next_element is a prime, we add it to the list
             if next_element in prime_set:
@@ -28,9 +36,8 @@ def arithmeticProg(primes: list) -> dict:
         if len(sequence_list) <= 1:
             pass
         else:
-            # need a line to iterate through the list in steps of 30 and find the most common
-            pass
-
-        # storing the resulting list of all primes found in the sequence in the result dictionary.
-        # values are assigned to the key of the prime number
-        result[prime] = sequence_list
+            # storing the resulting list of all primes found in the sequence in the result dictionary.
+            # values are assigned to the key of the prime number
+            result[prime] = sequence_list
+            
+    return result
