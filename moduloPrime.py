@@ -16,7 +16,7 @@ def primality(n: int) -> list:
     # variable for holding and checking the current value for primality
     hold = 2
 
-    while hold != n:
+    while k != n:
         
         hold *= 2
         k += 1
@@ -26,6 +26,11 @@ def primality(n: int) -> list:
 
             if hold % 2 != 0 and hold % 3 != 0:
                 prime_set.add(hold)
-                print(hold)
 
-    return prime_set
+    result = list(prime_set)
+    result.sort()
+
+    return result
+
+# quick testing of function
+print(primality(113))
