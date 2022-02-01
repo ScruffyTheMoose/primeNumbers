@@ -1,16 +1,22 @@
-def arithmeticProg(primes: list) -> dict:
+def arithmeticProg(primes: list, step_size: int = 30) -> dict:
     """
     Takes a list of prime numbers and uses it as a reference to check different arithmetic progressions for prime numbers.
-    Checks only for arithmetic progressions that are multiples of 30.
-    Returns a dictionary where key: value is 'step-size': 'primes'
+    Checks for arithmetic progressions that are multiples of 30 by default.
+    Returns a dictionary where key: value is 'start_point': 'step_size'
     """
 
-    prime_set = set(primes)
-
+    sequences = dict()
     result = dict()
+    prime_set = set(primes)
+    
+    # covering all starting points based on step_size. Once we reach n + step_size, the values begin to repeat.
+    test_range = list()
+    for n in range(7, 7 + step_size):
+        if n in prime_set:
+            test_range.append(n)
 
     # iterating through every prime in the given list to test all sequences starting at that value
-    for prime in primes:
+    for prime in test_range:
         
         # list for storing the sequence which we will then check for primes starting with the first prime
         sequence_list = [prime]
@@ -23,7 +29,7 @@ def arithmeticProg(primes: list) -> dict:
         while next_element <= primes[-1]:
             
             # getting next in sequence
-            next_element = prime + (30 * i)
+            next_element = prime + (step_size * i)
             
             # increment i
             i += 1
@@ -36,8 +42,31 @@ def arithmeticProg(primes: list) -> dict:
         if len(sequence_list) <= 1:
             pass
         else:
-            # storing the resulting list of all primes found in the sequence in the result dictionary.
+            # storing the resulting list of all primes found in the sequence in the sequences dictionary.
             # values are assigned to the key of the prime number
-            result[prime] = sequence_list
+            sequences[prime] = sequence_list
             
-    return result
+    return sequences
+
+############### UNFINISHED ##################
+def __longestSequence(input: list) -> int:
+    """Finds the most frequently occurring step amongst all of the elements of the input list and returns the value."""
+    
+    # list for storing the gaps
+    delta_list = list()
+    result = list()
+    
+    # iterates through the first half of the sequence
+    for i in range(0, len(input) // 2):
+        
+        # compares the element to every other element in the first half to find the difference
+        for j in range(i + 1, len(input) // 2):
+            
+            # stores the difference in delta_list
+            delta = abs(input[i] - input[j])
+            delta_list.append(delta)
+            
+    # creates set of the counts for each gap and finds the most frequently occurring
+    freq_delta = max(set(delta_list), key=delta_list.count)
+        
+    return freq_delta
