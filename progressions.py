@@ -56,9 +56,13 @@ def arithmeticProg(primes: list, step_size: int = 30) -> dict:
 def llap(primes: list, step_size: int) -> dict:
     """Applies the arithmeticProg() algorithm and parses/returns the longest sequence identified."""
 
+    # calling arithmeticProg() to build the set of all possible sequences based on given params
     sequences = arithmeticProg(primes, step_size=step_size)
+
+    # dict for storing the details of the largest identified sequences
+    results = dict()
             
-    # finding the longest sequence in the dictionary
+    # finding the longest sequence in the set
     longest = -1
     start_point = -1
     for key in sequences.keys():
@@ -71,4 +75,11 @@ def llap(primes: list, step_size: int) -> dict:
             longest = length
             start_point = key
 
-    return {'start_point': start_point, 'length': longest,'step': step_size}
+    # pulling all sequences that are longest length
+    for key in sequences.keys():
+
+        # if the sequence matches longest length, store in results
+        if len(sequences[key]) >= longest:
+            results[key] = sequences[key]
+
+    return results
