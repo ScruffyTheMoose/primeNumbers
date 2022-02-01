@@ -6,12 +6,11 @@ def arithmeticProg(primes: list, step_size: int = 30) -> dict:
     """
 
     sequences = dict()
-    result = dict()
     prime_set = set(primes)
     
     # covering all starting points based on step_size. Once we reach n + step_size, the values begin to repeat.
     test_range = list()
-    for n in range(7, 7 + step_size):
+    for n in range(7, primes[-1] + 1):
         if n in prime_set:
             test_range.append(n)
 
@@ -37,6 +36,8 @@ def arithmeticProg(primes: list, step_size: int = 30) -> dict:
             # if next_element is a prime, we add it to the list
             if next_element in prime_set:
                 sequence_list.append(next_element)
+            else:
+                break
 
         # checking if any primes were found
         if len(sequence_list) <= 1:
@@ -45,28 +46,19 @@ def arithmeticProg(primes: list, step_size: int = 30) -> dict:
             # storing the resulting list of all primes found in the sequence in the sequences dictionary.
             # values are assigned to the key of the prime number
             sequences[prime] = sequence_list
-            
-    return sequences
-
-############### UNFINISHED ##################
-def __longestSequence(input: list) -> int:
-    """Finds the most frequently occurring step amongst all of the elements of the input list and returns the value."""
-    
-    # list for storing the gaps
-    delta_list = list()
-    result = list()
-    
-    # iterates through the first half of the sequence
-    for i in range(0, len(input) // 2):
         
-        # compares the element to every other element in the first half to find the difference
-        for j in range(i + 1, len(input) // 2):
+        # finding the longest sequence in the dictionary
+        longest = -1
+        start_point = -1
+        for key in sequences.keys():
             
-            # stores the difference in delta_list
-            delta = abs(input[i] - input[j])
-            delta_list.append(delta)
+            # the length of the sequence being checked
+            length = len(sequences[key])
             
-    # creates set of the counts for each gap and finds the most frequently occurring
-    freq_delta = max(set(delta_list), key=delta_list.count)
-        
-    return freq_delta
+            # comparing this length to previous best
+            if length > longest:
+                longest = length
+                start_point = key
+    
+    # returning a dict containg needed values
+    return {'start_point': start_point, 'length': longest,'step': step_size}
