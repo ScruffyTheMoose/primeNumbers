@@ -1,6 +1,8 @@
 def primality(n: int) -> list:
     """Testing Fermat's Primality test to see how accurate it is at identifying prime numbers."""
 
+    ############### UNFINISHED ################
+
     # set for storing identified primes
     prime_set = set()
 
@@ -27,16 +29,3 @@ def primality(n: int) -> list:
                 print(hold)
 
     return prime_set
-
-def test():
-    # p starts as an odd number
-    p = 3
-
-    for i in range(1, 10):
-        if p % 5 == 3:
-            pex = 2^(p - 1)
-
-            if pex % p == 1 % p:
-                print(p)
-            else:
-                print('nah fam')
