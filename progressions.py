@@ -34,6 +34,7 @@ def arithmeticProg(primes: list, step_size: int = 30) -> dict:
             i += 1
 
             # if next_element is a prime, we add it to the list
+            # if not, we stop the sequence
             if next_element in prime_set:
                 sequence_list.append(next_element)
             else:
@@ -46,19 +47,28 @@ def arithmeticProg(primes: list, step_size: int = 30) -> dict:
             # storing the resulting list of all primes found in the sequence in the sequences dictionary.
             # values are assigned to the key of the prime number
             sequences[prime] = sequence_list
-        
-        # finding the longest sequence in the dictionary
-        longest = -1
-        start_point = -1
-        for key in sequences.keys():
-            
-            # the length of the sequence being checked
-            length = len(sequences[key])
-            
-            # comparing this length to previous best
-            if length > longest:
-                longest = length
-                start_point = key
+
     
     # returning a dict containg needed values
+    return sequences
+
+
+def llap(primes: list, step_size: int) -> dict:
+    """Applies the arithmeticProg() algorithm and parses/returns the longest sequence identified."""
+
+    sequences = arithmeticProg(primes, step_size=step_size)
+            
+    # finding the longest sequence in the dictionary
+    longest = -1
+    start_point = -1
+    for key in sequences.keys():
+        
+        # the length of the sequence being checked
+        length = len(sequences[key])
+        
+        # comparing this length to previous best
+        if length > longest:
+            longest = length
+            start_point = key
+
     return {'start_point': start_point, 'length': longest,'step': step_size}
