@@ -17,7 +17,7 @@ def primality(n: int) -> list:
     hold = 2
 
     while k != n:
-        
+
         hold *= 2
         k += 1
 
@@ -31,6 +31,7 @@ def primality(n: int) -> list:
     result.sort()
 
     return result
+
 
 # quick testing of function
 print(primality(113))

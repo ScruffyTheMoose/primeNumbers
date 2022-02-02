@@ -5,7 +5,7 @@ def palindrome(number) -> bool:
     1 -> True
     0 -> False
     """
-    
+
     if number < 10:
         return 1
 

@@ -7,7 +7,7 @@ def arithmeticProg(primes: list, step_size: int = 30) -> dict:
 
     sequences = dict()
     prime_set = set(primes)
-    
+
     # covering all starting points based on step_size. Once we reach n + step_size, the values begin to repeat.
     test_range = list()
     for n in range(7, primes[-1] + 1):
@@ -16,7 +16,7 @@ def arithmeticProg(primes: list, step_size: int = 30) -> dict:
 
     # iterating through every prime in the given list to test all sequences starting at that value
     for prime in test_range:
-        
+
         # list for storing the sequence which we will then check for primes starting with the first prime
         sequence_list = [prime]
 
@@ -24,12 +24,12 @@ def arithmeticProg(primes: list, step_size: int = 30) -> dict:
         # we only check up to the point that the last element in the sequence will be equal to the greatest prime we know
         next_element = -1
         i = 1
-        
+
         while next_element <= primes[-1]:
-            
+
             # getting next in sequence
             next_element = prime + (step_size * i)
-            
+
             # increment i
             i += 1
 
@@ -48,7 +48,6 @@ def arithmeticProg(primes: list, step_size: int = 30) -> dict:
             # values are assigned to the key of the prime number
             sequences[prime] = sequence_list
 
-    
     # returning a dict containg needed values
     return sequences
 
@@ -58,22 +57,22 @@ def llap(primes: list, step_size: int) -> dict:
 
     # calling arithmeticProg() to build the set of all possible sequences based on given params
     sequences = arithmeticProg(primes, step_size=step_size)
-            
+
     # finding the longest sequence in the set
     longest = -1
     start_point = -1
     for key in sequences.keys():
-        
+
         # the length of the sequence being checked
         length = len(sequences[key])
-        
+
         # comparing this length to previous best
         if length > longest:
             longest = length
             start_point = key
 
     # dict for storing the details of the largest identified sequences
-    results = {'length': longest, 'step': step_size}
+    results = {"length": longest, "step": step_size}
 
     # pulling all sequences that are longest length
     for key in sequences.keys():
