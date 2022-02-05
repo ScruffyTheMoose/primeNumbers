@@ -24,7 +24,7 @@ def __primality(n: int) -> bool:
     """
 
     if n > 2 and n % 2 == 0:
-        False  # n is even
+        return False  # n is even
 
     # we will halve m iteratively until we achieve the equality:
     # n - 1 = (2^k)m
@@ -45,24 +45,17 @@ def __primality(n: int) -> bool:
     b = pow(a, m, n)
 
     # initial check for primality
-    if b == 1 or b == -1:
+    if b == 1 or b == n - 1:
         return True
 
-    # exponent for 2^s * m
-    # in formula for recalculating b
-    s = 0
-
     # iterate until a result is found
-    while True:
+    for _ in range(k - 1):
 
         # raising b to (2^s)m and getting remainder from modulo n
-        b = pow(b, pow(2, s) * m, n)
+        b = pow(b, 2, n)
 
         # checking value of remainder against results
-        if (b - n) == -1:
+        if b == n - 1:
             return True
         elif b == 1:
             return False
-
-        # if no result determined, increment s and repeat on b
-        s += 1
