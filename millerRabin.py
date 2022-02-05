@@ -51,7 +51,7 @@ def __primality(n: int) -> bool:
     # iterate until a result is found
     for _ in range(k - 1):
 
-        # raising b to (2^s)m and getting remainder from modulo n
+        # raising b^2 and getting remainder from modulo n
         b = pow(b, 2, n)
 
         # checking value of remainder against results
