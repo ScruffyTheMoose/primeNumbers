@@ -70,13 +70,16 @@ def llap(primes: list, step_size: int) -> dict:
             longest = length
 
     # dict for storing the details of the largest identified sequences
-    results = {"length": longest, "step": step_size}
+    results = {"length": longest, "step": step_size, "total": 0}
 
     # pulling all sequences that are longest length
     for key in sequences.keys():
 
         # if the sequence matches longest length, store in results
         if len(sequences[key]) >= longest:
-            results[key] = sequences[key]
+
+            # commenting out full dict of sequences, inefficient and unnecessary for now
+            # results[key] = sequences[key]
+            results["total"] += 1
 
     return results
