@@ -21,5 +21,5 @@ Module that will take an integer value and determine whether or not it is a pali
 ### maxDelta.py
 A module for determining the greatest delta between two prime numbers in a given set. The function will return a dictionary with two elements; a list with the primes where the gap occured, and a value representing the size of the gap.
 
-### palindromeStudy.ipynb
-This is the jupyter notebook where the palindromes.py module was applied to sets of prime numbers and the results were evaluated.
+### Studies
+This folder contains Jupyter Notebooks were I applied the algorithms built here to look for interesting patterns in sets of prime numbers.
