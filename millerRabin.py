@@ -40,7 +40,7 @@ def __primality(n: int) -> bool:
     a = randrange(2, n - 1)
 
     # getting initial value for b
-    b = (a ** m) % n
+    b = pow(a, m, n)
 
     # initial check for primality
     if b == 1 or b == -1:
@@ -54,7 +54,7 @@ def __primality(n: int) -> bool:
     while True:
 
         # raising b to (2^s)m and getting remainder from modulo n
-        b = (b ** ((2 ** s) * m)) % n
+        b = pow(b, pow(2, s) * m, n)
 
         # checking value of remainder against results
         if (b - n) == -1:
