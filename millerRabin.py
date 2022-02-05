@@ -1,28 +1,66 @@
-import random
+from random import randrange
 
 
-def primality(n: int) -> int:
-    """Uses the Miller-Rabin test to determine with relatively high probability if a number is prime."""
+def evaluate(n: int, t: int) -> bool:
+    """
+    Function for running the Miller-Rabin primality test.
+    Will run the test t times.
+    Returns a boolean showing that n is either composite or probably prime.
+    """
 
-    # if the number is greater than 2 and even, it is composite by default
+    for _ in range(t):
+        if not __primality(n):
+            return False
+
+    return True
+
+
+def __primality(n: int) -> bool:
+    """
+    Operational code block of the Miller-Rabin primality test.
+    Given an integer, n, will determine if composite or probably prime.
+    """
+
     if n > 2 and n % 2 == 0:
-        return 0
+        False  # n is even
 
+    # we will halve m iteratively until we achieve the equality:
+    # n - 1 = (2^k)m
+    k = 0
+    m = n - 1
+
+    # this loop halves m
+    while m % 2 == 0:
+        k += 1
+        m //= 2  # floor div
+
+    # we now have k, m such that m is an odd integer
+
+    # determining random test value in range [2, n - 1]
+    a = randrange(2, n - 1)
+
+    # getting initial value for b
+    b = (a ** m) % n
+
+    # initial check for primality
+    if b == 1 or b == -1:
+        return True
+
+    # exponent for 2^s * m
+    # in formula for recalculating b
     s = 0
-    t = n - 1
 
-    while t % 2 == 0:
+    # iterate until a result is found
+    while True:
+
+        # raising b to (2^s)m and getting remainder from modulo n
+        b = (b ** ((2 ** s) * m)) % n
+
+        # checking value of remainder against results
+        if (b - n) == -1:
+            return True
+        elif b == 1:
+            return False
+
+        # if no result determined, increment s and repeat on b
         s += 1
-        t = t / 2
-
-    # choosing a random x value in range [1, n-1]
-    x = random.randint(1, n - 1)
-
-    for i in range(1, s):
-        if x ^ ((2 ^ i) * t) % n == 1 and x ^ ((2 ^ (i - 1)) * t) % n:
-            return 0
-
-    return 1
-
-
-print(primality(31))
