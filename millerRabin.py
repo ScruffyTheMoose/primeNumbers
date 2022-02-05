@@ -3,6 +3,8 @@ from random import randrange
 
 def evaluate(n: int, t: int) -> bool:
     """
+    n: number to be evaluated
+    t: number of test iterations
     Function for running the Miller-Rabin primality test.
     Will run the test t times.
     Returns a boolean showing that n is either composite or probably prime.
