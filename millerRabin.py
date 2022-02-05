@@ -10,18 +10,8 @@ def evaluate(n: int, t: int) -> bool:
     Returns a boolean showing that n is either composite or probably prime.
     """
 
-    for _ in range(t):
-        if not __primality(n):
-            return False
-
-    return True
-
-
-def __primality(n: int) -> bool:
-    """
-    Operational code block of the Miller-Rabin primality test.
-    Given an integer, n, will determine if composite or probably prime.
-    """
+    if n == 2 or n == 3:
+        return True
 
     if n > 2 and n % 2 == 0:
         return False  # n is even
@@ -38,24 +28,35 @@ def __primality(n: int) -> bool:
 
     # we now have k, m such that m is an odd integer
 
-    # determining random test value in range [2, n - 1]
-    a = randrange(2, n - 1)
+    for _ in range(t):
 
-    # getting initial value for b
-    b = pow(a, m, n)
+        # determining random test value in range [2, n - 1]
+        a = randrange(2, n - 1)
 
-    # initial check for primality
-    if b == 1 or b == n - 1:
-        return True
+        # getting initial value for b
+        b = pow(a, m, n)
 
-    # iterate until a result is found
-    for _ in range(k - 1):
+        # initial check for primality
+        if b == 1 or b == n - 1:
+            continue
 
-        # raising b^2 and getting remainder from modulo n
-        b = pow(b, 2, n)
+        # iterate until a result is found
+        for _ in range(k - 1):
 
-        # checking value of remainder against results
+            # raising b**2 and getting remainder from modulo n
+            b = pow(b, 2, n)
+
+            # checking value of b
+            if b == n - 1:
+                break
+
+        # if inner loop ends, check reason for ending
+        # loop was broken
         if b == n - 1:
-            return True
-        elif b == 1:
+            continue
+        # loop ran out
+        else:
             return False
+
+    # if all iterations were completed without throwing False, then n is probably prime
+    return True
