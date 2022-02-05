@@ -60,7 +60,6 @@ def llap(primes: list, step_size: int) -> dict:
 
     # finding the longest sequence in the set
     longest = -1
-    start_point = -1
     for key in sequences.keys():
 
         # the length of the sequence being checked
@@ -69,7 +68,6 @@ def llap(primes: list, step_size: int) -> dict:
         # comparing this length to previous best
         if length > longest:
             longest = length
-            start_point = key
 
     # dict for storing the details of the largest identified sequences
     results = {"length": longest, "step": step_size}
