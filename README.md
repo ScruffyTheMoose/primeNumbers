@@ -6,6 +6,9 @@
 
 `primeNumbers` is a research repository being built as part of an undergraduate research team studying patterns and relationships in prime numbers.
 
+### Studies Folder
+This folder contains Jupyter Notebooks were I applied the algorithms built here to look for interesting patterns in sets of prime numbers.
+
 ### millerRabin.py
 A personal build of the Miller-Rabin probabilistic primality test. Using the evaluate() function, you can test any integer n for t iterations. False confirms that n is a composite number while True implies that the number is *probably* prime.
 It is recommended to run between 40 and 60 tests for optimal evaluation of n.
@@ -21,6 +24,3 @@ Module that will take an integer value and determine whether or not it is a pali
 
 ### maxDelta.py
 A module for determining the greatest delta between two prime numbers in a given set. The function will return a dictionary with two elements; a list with the primes where the gap occured, and a value representing the size of the gap.
-
-### Studies Folder
-This folder contains Jupyter Notebooks were I applied the algorithms built here to look for interesting patterns in sets of prime numbers.
