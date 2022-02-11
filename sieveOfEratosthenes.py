@@ -1,3 +1,6 @@
+import numpy as np
+
+
 def sieve(n: int) -> list:
     """Sieve of Eratosthenes function. Give a value, n, and it will return a sorted list containing all primes in range [1, n+1]"""
 
@@ -25,3 +28,29 @@ def sieve(n: int) -> list:
     result = list(prime_set)
     result.sort()  # python doesn't like converting a set to a list and sorting on the same line
     return result
+
+
+def sieveBool(n: int) -> list:
+    """Sieve of Eratosthenes that uses a list of boolean values rather than integers in order to be more memory efficient."""
+
+    bools = np.full(n + 1, True)
+    bools[0] = False
+    bools[1] = False
+    i = 2  # Start at 2 since 0 and 1 are not primes
+
+    while i * i <= n:
+        # If prime[i] is not changed, then it is a prime
+        if bools[i]:
+            # Update all multiples of i as False
+            for j in range(i ** 2, n + 1, i):
+                bools[j] = False
+        # Check next number
+        i += 1
+
+    results = list()
+
+    for i in range(n + 1):
+        if bools[i]:
+            results.append(i)
+
+    return results
