@@ -1,7 +1,7 @@
 from random import randrange
 
 
-def evaluate(n: int, t: int) -> bool:
+def run(n: int, t: int) -> bool:
     """
     n: number to be evaluated
     t: number of test iterations

@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def sieve(n: int) -> list:
+def run(n: int) -> list:
     """Sieve of Eratosthenes function. Give a value, n, and it will return a sorted list containing all primes in range [1, n+1]"""
 
     # set for tracking composite numbers
@@ -30,7 +30,7 @@ def sieve(n: int) -> list:
     return result
 
 
-def sieveBool(n: int) -> list:
+def runBool(n: int) -> list:
     """Sieve of Eratosthenes that uses a list of boolean values rather than integers in order to be more memory efficient."""
 
     bools = np.full(n + 1, True)

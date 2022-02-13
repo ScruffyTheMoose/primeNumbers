@@ -1,4 +1,4 @@
-def palindrome(number) -> bool:
+def run(number) -> bool:
     """
     Checks if the given number is a palindrome arithmetically.
     Returns boolean where:

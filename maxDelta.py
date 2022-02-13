@@ -1,4 +1,4 @@
-def maxDelta(primes: list) -> dict:
+def run(primes: list) -> dict:
     """Will take a sorted list of integers and determine the greatest gap between two consecutive values in the list. Returns a dictionary containing the the two values and the size of the gap."""
 
     # maximum is a variable for tracking the largest gap found. If a gap is greater than maximum, the value will be updated.

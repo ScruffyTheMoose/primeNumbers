@@ -1,7 +1,7 @@
 from math import log, log10, log2
 
 
-def theta_e(primeList: list, n: int) -> list:
+def theta(primeList: list, n: int) -> list:
     """
     Chebyshev's Theta Function using natural log.
     Runs until the nth prime in the list.
