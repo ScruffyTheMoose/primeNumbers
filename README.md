@@ -10,7 +10,7 @@
 This folder contains Jupyter Notebooks were I applied the algorithms built here to look for interesting patterns in sets of prime numbers.
 
 ### millerRabin.py
-A personal build of the Miller-Rabin probabilistic primality test. Using the evaluate() function, you can test any integer n for t iterations. False confirms that n is a composite number while True implies that the number is *probably* prime.
+A personal build of the Miller-Rabin probabilistic primality test.
 It is recommended to run between 40 and 60 tests for optimal evaluation of n.
 
 ```
@@ -23,11 +23,11 @@ TRUE
 ```
 
 ### sieveOfEratosthenes.py
-This module contains the modified version of the Sieve of Eratosthenes. Instead of using list to store prime and composite numbers, we use sets. Lists require O(n) time to check if an element exists in the list, wheras a set can perform the same operation in O(1) time. The overall function of the algorithm is the same but is able to be performed at a significantly faster speed. At the end of the function, the set is converted to a list and sorted before being returned.
+Two versions included with one using integers and one using booleans. It is recommended to use the boolean version for speed and memory efficiency.
 
 ```
 # finding primes
-sieveOfEratosthenes.run(10)
+sieveOfEratosthenes.runBool(10)
 ```
 ```
 # returns
@@ -35,7 +35,7 @@ sieveOfEratosthenes.run(10)
 ```
 
 ### progressions.py
-A module built from scratch that can build arithmetic sequences of primes and determine the longest sequences identfied based on the provided parameters. The base algorithm in arithmeticProg() will return a dictionary containing all of the sequences built. Additionally, llap() will find and return the details of the longest sequences in the set.
+A module built from scratch that can build arithmetic sequences of primes and determine the longest sequences in a range.
 
 ```
 # finding progressions
@@ -61,7 +61,7 @@ progressions.llap(primeList, 30)
 ```
 
 ### palindromes.py
-Module that will take an integer value and determine whether or not it is a palindromic number. It will return boolean values to denote whether or not the given number is a palindrome. Should be applied iteratively.
+Module that will take an integer value and determine whether or not it is a palindromic number. Should be applied iteratively.
 
 ```
 # identifying palindrome
