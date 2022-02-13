@@ -8,14 +8,8 @@ def arithmeticProg(primes: list, step_size: int = 30) -> dict:
     sequences = dict()
     prime_set = set(primes)
 
-    # covering all starting points based on step_size. Once we reach n + step_size, the values begin to repeat.
-    test_range = list()
-    for n in range(7, primes[-1] + 1):
-        if n in prime_set:
-            test_range.append(n)
-
     # iterating through every prime in the given list to test all sequences starting at that value
-    for prime in test_range:
+    for prime in primes[3:]:
 
         # list for storing the sequence which we will then check for primes starting with the first prime
         sequence_list = [prime]
