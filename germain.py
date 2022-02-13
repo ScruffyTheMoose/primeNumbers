@@ -26,7 +26,7 @@ def run(primes: list) -> dict:
 
         # if the seq variable is not empty, meaning at least one Germain prime was identified, it gets added to results
         if seq:
-            sequences[prime] = seq
+            sequences[prime] = {"sequence": seq, "length": len(seq)}
 
     # returning the results
     return sequences
