@@ -1,13 +1,14 @@
+from pickle import TRUE
+
+
 def run(number) -> bool:
     """
     Checks if the given number is a palindrome arithmetically.
-    Returns boolean where:
-    1 -> True
-    0 -> False
+    Returns boolean.
     """
 
     if number < 10:
-        return 1
+        return True
 
     # saving number to variable n to check if n == reverse
     n = number
@@ -29,6 +30,6 @@ def run(number) -> bool:
 
     # if n, the starting number, is equal to the reverse then it is a palindrome
     if n == rev:
-        return 1
+        return True
     else:
-        return 0
+        return False
