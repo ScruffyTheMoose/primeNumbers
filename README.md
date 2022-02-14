@@ -19,7 +19,7 @@ millerRabin.run(53, 40)
 ```
 ```
 # returns
-TRUE
+True
 ```
 
 ### sieveOfEratosthenes.py
