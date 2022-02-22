@@ -1,6 +1,3 @@
-from pickle import TRUE
-
-
 def run(number) -> bool:
     """
     Checks if the given number is a palindrome arithmetically.
