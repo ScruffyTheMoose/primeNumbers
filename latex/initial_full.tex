@@ -22,7 +22,7 @@
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 
-\lstdefinestyle{millerRabin}{
+\lstdefinestyle{MillerRabin}{
 	backgroundcolor = \color{backcolour},
 	commentstyle = \color{codegreen},
 	keywordstyle = \color{magenta},
@@ -88,8 +88,29 @@
 	title = {Python function to generate sequences of Germain Primes.}
 }
 
-\begin{document}
+\lstdefinestyle{Palindromes}{
+	backgroundcolor = \color{backcolour},
+	commentstyle = \color{codegreen},
+	keywordstyle = \color{magenta},
+	numberstyle = \tiny\color{codegray},
+	stringstyle = \color{codepurple},
+	basicstyle = \ttfamily\footnotesize,
+	breakatwhitespace = false,         
+	breaklines = true,                 
+	captionpos = b,                    
+	keepspaces = true,                 
+	numbers = left,                    
+	numbersep = 6pt,                  
+	showspaces = false,                
+	showstringspaces = false,
+	showtabs = false,                  
+	tabsize = 2,
+	language = Python,
+	frame = single,
+	title = {Python function to identify palindromic prime numbers.}
+}
 
+\begin{document}
 
 \lstset{style = MillerRabin}
 
@@ -157,7 +178,6 @@ def run(n: int, t: int) -> bool:
 	# if all iterations were completed without throwing False, then n is probably prime
 	return True
 
-
 \end{lstlisting}
 
 \newpage
@@ -195,8 +215,6 @@ def run(primeList: list) -> list:
 		lastVal = current
 
 	return products
-
-
 
 \end{lstlisting}
 
@@ -239,7 +257,47 @@ def run(primes: list) -> dict:
 	# returning the results
 	return sequences
 
-	content...
+\end{lstlisting}
+
+\newpage
+
+\lstset{style = Palindromes}
+
+\begin{lstlisting}
+
+def run(prime: int) -> bool:
+	"""
+	Checks if the given prime is a palindrome arithmetically.
+	Returns boolean.
+	"""
+
+	if prime < 10:
+		return True
+
+	# saving prime to variable n to check if n == reverse
+	n = prime
+
+	# variable to track reversed prime value
+	rev = 0
+
+	# since we are using floor division for prime, we iterate until prime <= 0
+	while prime > 0:
+
+		# the currect digit being worked on is the remainder from mod 10, giving us the last digit
+		dig = prime % 10
+		
+		# multiply current reverse by 10 to allow for addition of dig
+		rev = (rev * 10) + dig
+		
+		# floor division on prime to truncate last digit
+		prime = prime // 10
+
+	# if n, the starting prime, is equal to the reverse then it is a palindrome
+	if n == rev:
+		return True
+	else:
+		return False
+
 \end{lstlisting}
 
 
