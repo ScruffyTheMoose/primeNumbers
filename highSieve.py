@@ -2,6 +2,7 @@ from random import randrange
 import numpy as np
 
 
+########## High Digit Sieve ##########
 def run(sieve_primes: list, l: int, u: int, t: int) -> list:
     """
     sieve_primes: a list of trivial primes to sieve out majority of composite numbers in high digit range
