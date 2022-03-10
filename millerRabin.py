@@ -16,6 +16,10 @@ def run(n: int, t: int) -> bool:
     if n > 2 and n % 2 == 0:
         return False  # n is even
 
+    # ensuring atleast 1 test iteration is run
+    if t <= 0:
+        t += 1
+
     # we will halve m iteratively until we achieve the equality:
     # n - 1 = (2^k)m
     k = 0
