@@ -66,6 +66,7 @@ def run(sieve_primes: list, l: int, u: int, t: int) -> list:
 
 
 ########## Miller-Rabin Test ##########
+# This code has been duplicated from the millerRabin.py module to avoid requiring imports when sharing with the team.
 def _mr(n: int, t: int) -> bool:
     """
     n: number to be evaluated
