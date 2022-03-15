@@ -1,6 +1,10 @@
 from random import randrange
 import numpy as np
 
+## NOTES ##
+# Compare results against Prime Number Theorem.
+# How many primes are found in the examined interval compared to what PNT suggests should exist.
+
 
 ########## High Digit Sieve ##########
 def run(sieve_primes: list, l: int, u: int, t: int) -> list:
