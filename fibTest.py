@@ -5,7 +5,7 @@ def run(n):
     # No more than 4 entries are stored at a time for memory
     fib_seq = [0, 1, 1]
     i = 3
-    while i <= n + 1:
+    while i <= (n + 1):
         next_element = (fib_seq[-1] + fib_seq[-2]) % n
         fib_seq.append(next_element)
         del fib_seq[0]
