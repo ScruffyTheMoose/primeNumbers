@@ -1,0 +1,95 @@
+\documentclass[11pt]{article}
+\usepackage[paperwidth=10.2in,paperheight=11.7in]{geometry}
+
+
+\usepackage{framed}
+
+\usepackage{amsmath, amssymb}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{12pt}
+\setlength{\voffset}{-30pt}
+\setlength{\hoffset}{-40pt}
+\setlength{\textwidth}{600pt}
+\setlength{\textheight}{720pt}
+\setlength{\marginparwidth}{5pt}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{Germain}{
+	backgroundcolor = \color{backcolour},
+	commentstyle = \color{codegreen},
+	keywordstyle = \color{magenta},
+	numberstyle = \tiny\color{codegray},
+	stringstyle = \color{codepurple},
+	basicstyle = \ttfamily\footnotesize,
+	breakatwhitespace = false,         
+	breaklines = true,                 
+	captionpos = b,                    
+	keepspaces = true,                 
+	numbers = left,                    
+	numbersep = 6pt,                  
+	showspaces = false,                
+	showstringspaces = false,
+	showtabs = false,                  
+	tabsize = 2,
+	language = Python,
+	frame = single,
+	title = {Algorithm to identify sequences of Germain primes.}
+}	
+\begin{document}
+	
+\lstset{style = Germain}
+
+\begin{lstlisting}
+	
+	def run(primes: list) -> dict:
+		"""
+		Returns a dict of all Germain Prime sequences identified in the given list
+		"""
+	
+		# dict for storing results
+		sequences = dict()
+		
+		# building set of primes of O(1) checking
+		primeSet = set(primes)
+		
+		# iterating through all primes in given list
+		for prime in primes:
+		
+			# list for storing the current sequence achieved
+			seq = list()
+			
+			# assigning the first prime to check as the current prime in the given list of primes
+			gt = prime
+			
+			# checking that gt is Germain, and if so, adding to sequence and updating gt
+			while (gt * 2) + 1 in primeSet:
+				seq.append(gt)
+				
+				gt = (gt * 2) + 1
+		
+		# if the seq variable is not empty, meaning at least one Germain prime was identified, it gets added to results
+		if seq:
+			sequences[prime] = {"sequence": seq, "length": len(seq)}
+		
+		# returning the results
+		return sequences
+
+		
+\end{lstlisting}
+
+
+Let \textit{p} be a prime number.
+
+\textit{p} is a Germain Prime if $2\textit{p}+1$ is also prime.
+
+
+
+\end{document}

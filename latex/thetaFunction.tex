@@ -1,0 +1,105 @@
+\documentclass[11pt]{article}
+\usepackage[paperwidth=10.2in,paperheight=11.7in]{geometry}
+
+
+\usepackage{framed}
+
+\usepackage{amsmath, amssymb}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{12pt}
+\setlength{\voffset}{-30pt}
+\setlength{\hoffset}{-40pt}
+\setlength{\textwidth}{600pt}
+\setlength{\textheight}{720pt}
+\setlength{\marginparwidth}{5pt}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{Theta}{
+	backgroundcolor = \color{backcolour},
+	commentstyle = \color{codegreen},
+	keywordstyle = \color{magenta},
+	numberstyle = \tiny\color{codegray},
+	stringstyle = \color{codepurple},
+	basicstyle = \ttfamily\footnotesize,
+	breakatwhitespace = false,         
+	breaklines = true,                 
+	captionpos = b,                    
+	keepspaces = true,                 
+	numbers = left,                    
+	numbersep = 6pt,                  
+	showspaces = false,                
+	showstringspaces = false,
+	showtabs = false,                  
+	tabsize = 2,
+	language = Python,
+	frame = single,
+	title = {Algorithm for calculating $\theta$(x) for a list of prime numbers using Chebyshev's first function, returning a list of all $\theta$(x) values in ascending order.}
+}	
+\begin{document}
+	
+\lstset{style = Theta}
+
+\begin{lstlisting}
+	
+	from math import log
+	
+	
+	def run(primeList: list) -> list:
+		"""
+		Chebyshev's Theta Function.
+		Returns a sorted list containing the log transformed product of the primorial at each prime in the given list.
+		"""
+		
+		# list for storing the product at each nth prime
+		products = list()
+		
+		# initiating var to store current Theta(x)
+		lastVal = 0
+		
+		# iterating through all primes in the list
+		for prime in primeList:
+		
+			# getting sum of logs
+			# using log laws, we know log(n) + log(m) == log(nm)
+			current = log(prime) + lastVal
+			
+			# storing to list
+			products.append(current)
+			
+			# updating product
+			lastVal = current
+		
+		return products
+	
+		
+\end{lstlisting}
+
+
+Chebyshev's First Function is defined as
+
+$\theta(x) = \sum_{\textit{p} \leq x} \log(\textit{p})$
+
+where \textit{p} is a prime number.
+
+Because this function is a sum, the provided list of primes must include all primes less than or equal to the greatest prime in the given list. If all primes are not included, the resulting $\theta$(x) will not be accurate.
+
+Because this is an arithmetic sequence, for each \textit{p}, we take its natural log and add it to the previously determined $\theta$(x).
+
+The end result is a list of values for $\theta$(x).
+
+Interestingly, the resulting curve produced by this function acts as a lower bound to the set of prime numbers which it represents. The curve is also log-linear, which allows for very loose approximation of prime numbers.
+
+To demonstrate the relationship between $\theta(x)$ and x, here are some charts.
+**ADD IMAGES HERE**.
+
+The relative difference between $\theta(x)$ and x approaches 0 as x tends to infinity.
+
+\end{document}

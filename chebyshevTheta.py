@@ -1,9 +1,21 @@
 from math import log
+from sieveOfEratosthenes import runBool as sieve
 
 
-def run(primeList: list) -> list:
+def thetaX(x: int) -> list:
     """
-    Chebyshev's Theta Function.
+    Chebyshev's Theta Function taking the upper limit of the range, x, as argument.
+    Returns a sorted list containing the log transformed product of the primorial at each prime in the given list.
+    """
+
+    primes = sieve(x)
+
+    return theta(primes)
+
+
+def theta(primeList: list) -> list:
+    """
+    Chebyshev's Theta Function taking a list of primes as argument.
     Returns a sorted list containing the log transformed product of the primorial at each prime in the given list.
     """
 

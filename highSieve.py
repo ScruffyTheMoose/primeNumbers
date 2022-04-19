@@ -1,13 +1,81 @@
 from random import randrange
 import numpy as np
 
-## NOTES ##
-# Compare results against Prime Number Theorem.
-# How many primes are found in the examined interval compared to what PNT suggests should exist.
+
+########## High Digit Sieve Deterministic ##########
+def sieve(sieve_primes: list, l: int, u: int, t: int) -> list:
+    """
+    sieve_primes: a list of trivial primes to sieve out majority of composite numbers in high digit range
+    l: lower bound of interval
+    u: upper bound of interval
+    t: number of tests to iterate on each potential prime
+
+    t=1 conducts single Fermat test
+    t=60 for error rate of 2^(-128)
+    """
+
+    # ensuring boundaries are odd
+    if l % 2 == 0:
+        l -= 1
+    if u % 2 == 0:
+        u += 1
+
+    shape = int((u - l) / 2)
+    bools = np.full(shape, None)
+    i = 0
+
+    # iterating through only odd numbers on interval
+    for n in range(l, u, 2):
+
+        # initially assumed to be prime
+        stat = True
+
+        # checking if any prime factors exist for n
+        # starts at smallest primes which are most probable
+        for p in sieve_primes:
+
+            # if p is a factor of n, we know its composite and exit check
+            if n % p == 0:
+                stat = False
+                break
+
+        # if all prime factor checks completed, run Miller-Rabin and store result
+        if stat:
+            bools[i] = _mr(n, t)
+        # if prime factor checks failed, store result immediately
+        else:
+            bools[i] = stat
+
+        # increment i
+        i += 1
+
+    # list of resulting primes
+    primes = list()
+    # iterator variable
+    j = 0
+
+    # cross checking elements in interval against boolean results
+    for n in range(l, u, 2):
+
+        if bools[j] == True:
+            primes.append(n)
+
+        j += 1
+
+    # running each remaining prime through Fibonacci Primaility
+    for p in primes:
+
+        fib = _ft(p)
+
+        if not fib:
+            primes.remove(p)
+
+    # returning result
+    return primes
 
 
-########## High Digit Sieve ##########
-def run(sieve_primes: list, l: int, u: int, t: int) -> list:
+########## High Digit Sieve Probabalistic ##########
+def __sieve(sieve_primes: list, l: int, u: int, t: int) -> list:
     """
     sieve_primes: a list of trivial primes to sieve out majority of composite numbers in high digit range
     l: lower bound of interval
@@ -134,3 +202,26 @@ def _mr(n: int, t: int) -> bool:
 
     # if all iterations were completed without throwing False, then n is probably prime
     return True
+
+
+########## Fibonacci Test ##########
+def _ft(n: int) -> bool:
+    """
+    Fibonacci test to identify if number is prime deterministically.
+    Generates Fibonacci sequence modulo p.
+    p: prime number
+    """
+
+    fib_seq = [0, 1, 1]
+    i = 3
+    while i <= n + 1:
+        next_element = (fib_seq[-1] + fib_seq[-2]) % n
+        fib_seq.append(next_element)
+        del fib_seq[0]
+        i += 1
+
+    # Then we test if the n+1th term or the n-1th of the sequence is divisible by n
+    # If yes, n is prime. Otherwise, n is composite
+    if (fib_seq[-1] == 0) or (fib_seq[0] == 0):
+        return True
+    return False
