@@ -231,16 +231,14 @@ The Prime Counting Function, $\pi(x)$, can be used to estimate the quantity of p
 
 We can then alter this formula to estimate the quantity of primes on an interval [x, x+k].
 
-$\frac{x+k}{log(x+k)} - \frac{x}{log(x+k)}$
-
-$\rightarrow$ $\frac{k}{log(x+k)}$\\
+\begin{align*}
+	\frac{x+k}{log(x+k)} - \frac{x}{log(x+k)}
+	\rightarrow \frac{k}{log(x+k)}
+\end{align*}
 
 To test the estimates of $\pi(x)$ against this sieve, we looked at increasingly high intervals outside of the trivial range and compared the true number of primes to $\pi(x)$.
 
-Here are the findings for the first one-million integers outside the trivial range in intervals where k=10000.
-**ADD IMAGE HERE**
-
-During continued testing, we found that the difference between $\pi(x)$ and the true prime count approaches zero as the lower bound for the interval tends to infinity.
+During testing, we found that the difference between $\pi(x)$ and the true prime count approaches zero as the lower bound for the interval tends to infinity.
 
 
 \end{document}
