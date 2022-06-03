@@ -6,6 +6,8 @@
 
 `primeNumbers` is a research repository being built as part of an undergraduate research team studying patterns and relationships in prime numbers.
 
+##### [View our Poster](https://raw.githubusercontent.com/ScruffyTheMoose/primeNumbers/main/imgs/MURL-poster-img.png) or [Read our Paper](https://github.com/ScruffyTheMoose/primeNumbers/blob/main/imgs/NumericalAdventuresWithPrimeNumbers.pdf)
+
 ### Studies Folder
 This folder contains Jupyter Notebooks were I applied the algorithms built here to look for interesting patterns in sets of prime numbers.
 
